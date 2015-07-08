@@ -1,0 +1,13 @@
+html, body, #mapaTarget {
+    height: 100%;
+    width:100%;
+}
+
+#mouseposition {
+    position: fixed;
+    top: 0;
+    right:0;
+    width:200px;
+    heith:2em;
+    border:red 2px solid;
+}

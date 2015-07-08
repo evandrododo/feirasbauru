@@ -8,7 +8,7 @@
  *    Camada que define graficamente como serão plotados os pontos da Source
  *  - Layer
  *    Camadas finais que gerenciam, encapsulam e exibem o conteúdo
- *    
+ *
  */
 
 $(document).ready(function () {
@@ -22,7 +22,7 @@ $(document).ready(function () {
 	mapa.layerMapa = new ol.layer.Tile({
 		source: new ol.source.XYZ({
 			attributions: [
-				new ol.Attribution({ 
+				new ol.Attribution({
 					html: 'Evandro Carreira - Geoprocessamento divertido'
 				}),
         		ol.source.OSM.ATTRIBUTION
@@ -31,10 +31,22 @@ $(document).ready(function () {
     	})
 	});
 
+	// Mostra a posição do mouse
+	var mousePositionControl = new ol.control.MousePosition({
+	  coordinateFormat: ol.coordinate.createStringXY(4),
+	  projection: 'EPSG:4326',
+	  className: 'custom-mouse-position',
+	  target: document.getElementById('mouse-position'),
+	  undefinedHTML: '&nbsp;'
+	});
 	/* Core do OpenLayers - Ativa o mapa */
 	mapa.map = new ol.Map({
 		target: 'mapaTarget',
-		controls: [],
+		controls: ol.control.defaults({
+			attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+			  collapsible: false
+			})
+		}).extend([mousePositionControl]),
 		layers: [
 			mapa.layerMapa
 		],
@@ -45,4 +57,5 @@ $(document).ready(function () {
 			maxZoom: 20
 		})
 	});
+
 });
