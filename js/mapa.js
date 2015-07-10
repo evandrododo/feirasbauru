@@ -20,6 +20,8 @@ $(document).ready(function () {
 
 	// Carrega o mapa ~dark~
 	mapa.layerMapa = new ol.layer.Tile({
+		source: new ol.source.OSM()
+		/*
 		source: new ol.source.XYZ({
 			attributions: [
 				new ol.Attribution({
@@ -29,6 +31,7 @@ $(document).ready(function () {
       		],
       		url: 'http://s.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
     	})
+		*/
 	});
 
 	// Mostra a posição do mouse

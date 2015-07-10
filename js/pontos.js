@@ -3,7 +3,7 @@ var geojsonFeiras = {
   "crs": {
     "type": "name",
     "properties": {
-      "name": "EPSG:3857" 
+      "name": "EPSG:3857"
     }
   },
   "features": [
@@ -20,7 +20,7 @@ var geojsonFeiras = {
       },
       "geometry": {
         "type": "LineString",
-        "coordinates": [[0, 0], [0, 0]]
+        "coordinates": [[-22.301889,-49.046538], [-22.301341,-49.047234]]
       }
     },
     {
@@ -36,7 +36,7 @@ var geojsonFeiras = {
       },
       "geometry": {
         "type": "LineString",
-        "coordinates": [[0, 0], [0, 0]]
+        "coordinates": [[-22.314465,-49.083971], [-22.314222,-49.084622]]
       }
     },
     {
@@ -52,7 +52,7 @@ var geojsonFeiras = {
       },
       "geometry": {
         "type": "LineString",
-        "coordinates": [[0, 0], [0, 0]]
+        "coordinates": [[-22.314372,-49.083939], [-22.313688,-49.083697]]
       }
     },
     {
@@ -68,7 +68,7 @@ var geojsonFeiras = {
       },
       "geometry": {
         "type": "LineString",
-        "coordinates": [[0, 0], [0, 0]]
+        "coordinates": [[-22.313633,-49.083737], [-22.313375,-49.084382]]
       }
     },
     {
@@ -84,7 +84,7 @@ var geojsonFeiras = {
       },
       "geometry": {
         "type": "LineString",
-        "coordinates": [[0, 0], [0, 0]]
+        "coordinates": [[-22.314058,-49.084692], [-22.313339,-49.084473]]
       }
     },
     {
@@ -100,7 +100,7 @@ var geojsonFeiras = {
       },
       "geometry": {
         "type": "LineString",
-        "coordinates": [[0, 0], [0, 0]]
+        "coordinates": [[-22.321276,-49.071335], [-22.317746,-49.072331]]
       }
     },
     {
@@ -116,7 +116,7 @@ var geojsonFeiras = {
       },
       "geometry": {
         "type": "LineString",
-        "coordinates": [[0, 0], [0, 0]]
+        "coordinates": [[-22.320426,-49.071511], [-22.320206,-49.070609]]
       }
     },
     {
@@ -174,7 +174,7 @@ var geojsonFeiras = {
         "tipo" : "FLC",
         "bairro" : "Altos da Cidade",
         "endereco" : "Rua Manoel Bento Cruz",
-        "quadras" : "2", 
+        "quadras" : "2",
         "horarioInicio" : "06h30",
         "horarioFim" : "11h00"
       },
