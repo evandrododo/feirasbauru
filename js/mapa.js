@@ -33,6 +33,16 @@ $(document).ready(function () {
     		})
 	});
 
+        mapa.aerialLayer = new ol.layer.Tile ({
+            source: new ol.source.BingMaps({
+                key: 'Al-vZDA_YaFdgkTvi2V_X8OIdDW8cD9CZ34nO93XS-cqWDY6p5RoJHkTV0P_nkRm',
+                imagerySet: 'AerialWithLabels',
+                maxZoom: 19
+            }),
+                preload: 20,
+                    opacity: 1
+        });
+
 	// Mostra a posição do mouse
 	var mousePositionControl = new ol.control.MousePosition({
 	  coordinateFormat: ol.coordinate.createStringXY(4),
@@ -50,7 +60,8 @@ $(document).ready(function () {
 			})
 		}).extend([mousePositionControl]),
 		layers: [
-			mapa.layerMapa
+			//mapa.layerMapa
+                        mapa.aerialLayer
 		],
 		view: new ol.View({
 			center: ol.proj.transform([-49.06307, -22.32821], 'EPSG:4326', 'EPSG:3857'),
@@ -67,7 +78,7 @@ $(document).ready(function () {
     		format: new ol.format.GeoJSON(),
     		loader: function(extent, resolution, projection) {
       			//monta url com bounding box
-		      	var url = 'pontos.json';
+		      	var url = '/js/pontos.json';
       				$.ajax({
         				url: url,
         				success: function(data) {
@@ -98,15 +109,24 @@ $(document).ready(function () {
         		})
     		})];
       		return style;
-  	};
+        };
 
-	/* Define os layers com base no source */
-  	mapa.layerFeiras = new ol.layer.Vector({
-    		source: mapa.feirasSource,
-    		name: 'Feiras',
-		style: mapa.stylePlanoFeiras
-  	});
-	
-	mapa.map.addLayer(mapa.layerFeiras);
+        /* Define os layers com base no source */
+        mapa.layerFeiras = new ol.layer.Vector({
+            source: mapa.feirasSource,
+            name: 'Feiras',
+            style: mapa.stylePlanoFeiras
+        });
 
+        mapa.map.addLayer(mapa.layerFeiras);
+
+        geolocation = new ol.Geolocation({
+            projection: mapa.map.getView().getProjection(),
+            tracking: true
+        });     
+
+            geolocation.once('change', function(evt) {
+                mapa.map.getView().setCenter(geolocation.getPosition());
+                mapa.map.getView().setZoom(17);
+            });
 });

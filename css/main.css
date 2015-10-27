@@ -1,13 +1,13 @@
 html, body, #mapaTarget {
-    height: 100%;
+    height: 90vh;
     width:100%;
 }
-
+.controles {
+    height:10vh;
+    background-color:#223;
+    color:white;
+}
 #mouseposition {
-    position: fixed;
-    top: 0;
-    right:0;
     width:200px;
-    heith:2em;
-    border:red 2px solid;
+
 }
