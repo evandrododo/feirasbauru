@@ -40,7 +40,7 @@ $(document).ready(function () {
                 maxZoom: 19
             }),
                 preload: 20,
-                    opacity: 1
+                opacity: 1
         });
 
 	// Mostra a posição do mouse
@@ -49,19 +49,21 @@ $(document).ready(function () {
 	  projection: 'EPSG:4326',
 	  className: 'custom-mouse-position',
 	  target: document.getElementById('mouse-position'),
-	  undefinedHTML: '&nbsp;'
+	  undefinedHTML: ''
 	});
 	/* Core do OpenLayers - Ativa o mapa */
 	mapa.map = new ol.Map({
 		target: 'mapaTarget',
-		controls: ol.control.defaults({
-			attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
-			  collapsible: false
-			})
-		}).extend([mousePositionControl]),
+		controls: [
+      mousePositionControl,
+      new ol.control.FullScreen(),
+      new ol.control.Rotate(),
+      new ol.control.OverviewMap(),
+      new ol.control.Rotate()
+    ],
 		layers: [
 			//mapa.layerMapa
-                        mapa.aerialLayer
+      mapa.aerialLayer
 		],
 		view: new ol.View({
 			center: ol.proj.transform([-49.06307, -22.32821], 'EPSG:4326', 'EPSG:3857'),
@@ -119,14 +121,16 @@ $(document).ready(function () {
         });
 
         mapa.map.addLayer(mapa.layerFeiras);
+        mapa.map.addControl(new ol.control.Zoom());
 
         geolocation = new ol.Geolocation({
             projection: mapa.map.getView().getProjection(),
             tracking: true
         });     
 
-            geolocation.once('change', function(evt) {
-                mapa.map.getView().setCenter(geolocation.getPosition());
-                mapa.map.getView().setZoom(17);
-            });
+        geolocation.once('change', function(evt) {
+            mapa.map.getView().setCenter(geolocation.getPosition());
+            mapa.map.getView().setZoom(17);
+        });
+
 });
